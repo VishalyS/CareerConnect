@@ -88,62 +88,26 @@ const app = {
   // Load assessments content
   loadAssessmentsContent: async function() {
     const data = await this.api('/assessments');
-    let completedHtml = '';
-    let availableHtml = '';
+    let html = '';
 
     if (Array.isArray(data) && data.length > 0) {
-      const completed = data.filter(a => a.type === 'completed');
       const available = data.filter(a => a.type === 'available');
-
-      // Render completed assessments
-      if (completed.length > 0) {
-        completedHtml = `
-          <div class="assessment-section">
-            <h3 style="margin-bottom: 15px; border-bottom: 2px solid #00d4ff; padding-bottom: 10px;">Completed Assessments</h3>
-            ${completed.map(a => `
-              <div class="card">
-                <h4>Assessment Result</h4>
-                <p>${a.summary || 'Career assessment completed'}</p>
-                <div class="meta">
-                  ${a.scores ? Object.entries(a.scores).map(([key, val]) => 
-                    `<span class="tag">${key}: ${val}%</span>`
-                  ).join('') : ''}
-                </div>
-              </div>
-            `).join('')}
+      
+      html = available.map(a => `
+        <div class="card">
+          <h3>${a.title}</h3>
+          <p>${a.description || ''}</p>
+          <div class="meta">
+            <span class="tag">Duration: ${a.duration}</span>
+            <button class="btn btn-small" onclick="alert('Assessment: ${a.title}\\n\\nThis will start a new assessment. (Feature coming soon)')">Take</button>
           </div>
-        `;
-      }
-
-      // Render available assessments
-      if (available.length > 0) {
-        availableHtml = `
-          <div class="assessment-section" style="margin-top: 30px;">
-            <h3 style="margin-bottom: 15px; border-bottom: 2px solid #00d4ff; padding-bottom: 10px;">Available Assessments</h3>
-            ${available.map(a => `
-              <div class="card">
-                <h4>${a.title}</h4>
-                <p>${a.description}</p>
-                <div class="meta">
-                  <span class="tag">Duration: ${a.duration}</span>
-                  <button class="btn btn-small" onclick="alert('Assessment: ${a.title}\\n\\nThis will start a new assessment. (Feature coming soon)')">Take Assessment</button>
-                </div>
-              </div>
-            `).join('')}
-          </div>
-        `;
-      }
-    } else {
-      completedHtml = '<div class="card"><p>No assessments yet.</p></div>';
-      availableHtml = `
-        <div class="assessment-section" style="margin-top: 30px;">
-          <h3 style="margin-bottom: 15px; border-bottom: 2px solid #00d4ff; padding-bottom: 10px;">Available Assessments</h3>
-          <div class="card"><p>No assessments available at the moment.</p></div>
         </div>
-      `;
+      `).join('');
+    } else {
+      html = '<div class="card"><p>No assessments available yet.</p></div>';
     }
 
-    document.getElementById('assessmentsContent').innerHTML = completedHtml + availableHtml;
+    document.getElementById('assessmentsContent').innerHTML = html;
   },
 
   // Load training content
