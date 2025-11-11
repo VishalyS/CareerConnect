@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>CareerConnect - Your Career Growth Platform</title>
     <link rel="stylesheet" href="/css/style.css" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
   </head>
   <body>
     <!-- Landing / Auth Pages -->
@@ -50,9 +51,9 @@
       <!-- Register Page -->
       <div id="registerPage" class="page" style="display:none;">
         <header class="auth-header">
-          <div class="container">
-            <button class="back-btn" onclick="window.app.goToPage('landing')">← Back</button>
+          <div class="container auth-header-container">
             <h1>CareerConnect</h1>
+            <button class="home-btn" onclick="window.app.goToPage('landing')">Home</button>
           </div>
         </header>
         <main class="auth-main">
@@ -82,9 +83,9 @@
       <!-- Login Page -->
       <div id="loginPage" class="page" style="display:none;">
         <header class="auth-header">
-          <div class="container">
-            <button class="back-btn" onclick="window.app.goToPage('landing')">← Back</button>
+          <div class="container auth-header-container">
             <h1>CareerConnect</h1>
+            <button class="home-btn" onclick="window.app.goToPage('landing')">Home</button>
           </div>
         </header>
         <main class="auth-main">
@@ -110,40 +111,29 @@
 
     <!-- Dashboard -->
     <div id="dashboardPage" class="page" style="display:none;">
-      <header class="dashboard-header">
-        <div class="container">
-          <div class="header-left">
-            <h1>CareerConnect</h1>
+      <nav class="dashboard-navbar">
+        <h1 style="position: absolute; left: 30px; font-size: 28px; background: linear-gradient(90deg, #00d4ff, #00f7ff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; margin: 0;">CareerConnect</h1>
+        <div class="navbar-container">
+          <div class="nav-buttons">
+            <button class="nav-btn active" data-tab="assessments">Assessments</button>
+            <button class="nav-btn" data-tab="training">Training</button>
+            <button class="nav-btn" data-tab="mentorship">Mentorship</button>
+            <button class="nav-btn" data-tab="jobs">Jobs</button>
           </div>
-          <div class="header-right">
-            <div class="user-greeting">Welcome, <span id="userNameDisplay">User</span>!</div>
-            <button id="logoutBtn" class="btn btn-danger">Logout</button>
+          <div class="profile-dropdown">
+            <button id="profileIconBtn" class="profile-icon-btn">👤</button>
+            <div id="profileDropdown" class="profile-dropdown-menu" style="display:none;">
+              <div id="profileDropdownContent" class="profile-dropdown-content"></div>
+              <button id="logoutBtnDropdown" class="btn btn-danger btn-small" style="width: 100%; margin-top: 10px;">Logout</button>
+            </div>
           </div>
-        </div>
-      </header>
-
-      <nav class="dashboard-nav">
-        <div class="container">
-          <button class="nav-btn active" data-tab="profile">Profile</button>
-          <button class="nav-btn" data-tab="assessments">Assessments</button>
-          <button class="nav-btn" data-tab="training">Training</button>
-          <button class="nav-btn" data-tab="mentorship">Mentorship</button>
-          <button class="nav-btn" data-tab="jobs">Jobs</button>
         </div>
       </nav>
 
       <main class="dashboard-main">
         <div class="container">
-          <!-- Profile Section -->
-          <section id="profileSection" class="module active">
-            <div class="section-header">
-              <h2>My Profile</h2>
-            </div>
-            <div id="profileContent" class="profile-info"></div>
-          </section>
-
           <!-- Assessments Section -->
-          <section id="assessmentsSection" class="module">
+          <section id="assessmentsSection" class="module active">
             <div class="section-header">
               <h2>Career Assessments</h2>
             </div>

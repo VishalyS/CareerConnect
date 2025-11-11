@@ -41,9 +41,15 @@ body {
 
 .landing-header {
   background: linear-gradient(135deg, #0a0e15 0%, #1a2f3f 100%);
-  padding: 40px 0;
+  padding: 15px 30px 15px 60px;
   border-bottom: 2px solid var(--accent);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+}
+
+.landing-header .container {
+  max-width: 100%;
+  padding: 0;
+  margin: 0;
 }
 
 .landing-header h1 {
@@ -88,7 +94,7 @@ body {
   font-size: 18px;
   color: var(--text-secondary);
   margin-bottom: 40px;
-  max-width: 600px;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -102,9 +108,9 @@ body {
 
 .features {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 30px;
-  max-width: 1000px;
+  max-width: 1400px;
   width: 100%;
 }
 
@@ -151,12 +157,18 @@ body {
 }
 
 .auth-header .container {
-  display: flex;
-  align-items: center;
-  gap: 20px;
+  max-width: 100%;
+  padding: 0 30px;
+  margin: 0;
 }
 
-.back-btn {
+.auth-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-btn {
   background: linear-gradient(135deg, var(--bg-hover) 0%, #3a4454 100%);
   border: 1px solid var(--accent);
   color: var(--text-primary);
@@ -167,7 +179,7 @@ body {
   font-weight: 500;
 }
 
-.back-btn:hover {
+.home-btn:hover {
   background: var(--accent);
   color: var(--bg-dark);
 }
@@ -256,12 +268,15 @@ body {
 
 .result-message {
   margin-top: 16px;
-  padding: 12px;
+  padding: 0;
   border-radius: 6px;
   font-size: 13px;
-  min-height: 20px;
-  background: rgba(0, 212, 255, 0.1);
   color: var(--accent);
+}
+
+.result-message:not(:empty) {
+  padding: 12px;
+  background: rgba(0, 212, 255, 0.1);
 }
 
 /* ============ BUTTONS ============ */
@@ -313,6 +328,112 @@ body {
 
 .btn-block {
   width: 100%;
+}
+
+/* ============ DASHBOARD NAVBAR ============ */
+
+.dashboard-navbar {
+  background: linear-gradient(135deg, #0a0e15 0%, #1a1f2e 100%);
+  padding: 16px 30px;
+  border-bottom: 2px solid var(--accent);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  position: relative;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 40px;
+}
+
+.navbar-left {
+  display: none;
+}
+
+.navbar-left h1 {
+  font-size: 28px;
+  background: linear-gradient(90deg, var(--accent), #00f7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.nav-buttons {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
+  order: -1;
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+.profile-dropdown {
+  position: relative;
+}
+
+.profile-icon-btn {
+  background: rgba(0, 212, 255, 0.15);
+  border: none;
+  color: var(--accent);
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-icon-btn:hover {
+  background: rgba(0, 212, 255, 0.3);
+  color: var(--accent);
+}
+
+.profile-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-hover);
+  border-radius: 8px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  padding: 16px;
+  margin-top: 8px;
+  min-width: 280px;
+  z-index: 101;
+}
+
+.profile-dropdown-content {
+  background: linear-gradient(135deg, var(--bg-hover) 0%, #3a4454 100%);
+  padding: 12px;
+  border-radius: 6px;
+  border-left: 4px solid var(--success);
+}
+
+.profile-dropdown-content p {
+  margin: 6px 0;
+  color: var(--text-secondary);
+  font-size: 13px;
+}
+
+.profile-dropdown-content strong {
+  color: var(--accent);
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  margin-top: 8px;
 }
 
 .dashboard-header {
@@ -372,27 +493,27 @@ body {
 }
 
 .nav-btn {
-  background: linear-gradient(135deg, var(--bg-hover) 0%, #3a4454 100%);
-  border: 1px solid var(--bg-hover);
+  background: transparent;
+  border: none;
   color: var(--text-primary);
   padding: 10px 20px;
-  border-radius: 8px;
   cursor: pointer;
   transition: all 0.3s ease;
   font-weight: 500;
   font-size: 14px;
   white-space: nowrap;
+  border-bottom: 2px solid transparent;
+  position: relative;
 }
 
 .nav-btn:hover {
-  border-color: var(--accent);
-  transform: translateY(-2px);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .nav-btn.active {
-  background: var(--accent);
-  color: var(--bg-dark);
-  border-color: var(--accent);
+  color: var(--accent);
+  border-bottom-color: var(--accent);
 }
 
 .dashboard-main {
@@ -577,6 +698,22 @@ body {
 
   .auth-card {
     padding: 30px 20px;
+  }
+
+  .navbar-container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  .navbar-left {
+    width: 100%;
+  }
+
+  .nav-buttons {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
   }
 
   .dashboard-header .container {

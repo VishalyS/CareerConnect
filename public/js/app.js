@@ -55,28 +55,17 @@ const app = {
 
   // Load dashboard
   loadDashboard: function() {
-    document.getElementById('userNameDisplay').textContent = this.currentUser.name;
-    const profileCard = `
-      <div class="profile-info">
-        <div class="profile-info-item">
-          <strong>Name</strong>
-          <p>${this.currentUser.name}</p>
-        </div>
-        <div class="profile-info-item">
-          <strong>Email</strong>
-          <p>${this.currentUser.email}</p>
-        </div>
-        <div class="profile-info-item">
-          <strong>Role</strong>
-          <p>${this.currentUser.role || 'User'}</p>
-        </div>
-        <div class="profile-info-item">
-          <strong>Member Since</strong>
-          <p>${new Date(this.currentUser.createdAt).toLocaleDateString()}</p>
-        </div>
-      </div>
+    // Populate profile dropdown
+    const profileHtml = `
+      <p><strong>Name</strong></p>
+      <p>${this.currentUser.name}</p>
+      <p><strong>Email</strong></p>
+      <p>${this.currentUser.email}</p>
+      <p><strong>Member Since</strong></p>
+      <p>${new Date(this.currentUser.createdAt).toLocaleDateString()}</p>
     `;
-    document.getElementById('profileContent').innerHTML = profileCard;
+    document.getElementById('profileDropdownContent').innerHTML = profileHtml;
+    
     // Auto-load all module content
     this.loadAssessmentsContent();
     this.loadTrainingContent();
@@ -264,8 +253,23 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // ============ LOGOUT ============
-  document.getElementById('logoutBtn').addEventListener('click', () => {
+  document.getElementById('logoutBtnDropdown').addEventListener('click', () => {
     app.logout();
+  });
+
+  // ============ PROFILE DROPDOWN ============
+  document.getElementById('profileIconBtn').addEventListener('click', () => {
+    const dropdown = document.getElementById('profileDropdown');
+    dropdown.style.display = dropdown.style.display === 'none' ? 'block' : 'none';
+  });
+
+  // Close dropdown when clicking outside
+  document.addEventListener('click', (e) => {
+    const dropdown = document.getElementById('profileDropdown');
+    const profileBtn = document.getElementById('profileIconBtn');
+    if (!profileBtn.contains(e.target) && !dropdown.contains(e.target)) {
+      dropdown.style.display = 'none';
+    }
   });
 
   // ============ DASHBOARD NAV ============
