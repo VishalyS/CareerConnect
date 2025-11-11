@@ -542,6 +542,94 @@ body {
   display: block;
 }
 
+/* ============ SEARCH & FILTER ============ */
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.section-header h2 {
+  color: var(--accent);
+  font-size: 24px;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.search-filter-bar {
+  display: flex;
+  gap: 12px;
+  flex: 0 1 auto;
+  min-width: auto;
+  width: auto;
+}
+
+.search-input {
+  width: 500px;
+  background: var(--bg-dark);
+  border: 1px solid var(--bg-hover);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  transition: all 0.3s ease;
+}
+
+.search-input::placeholder {
+  color: var(--text-secondary);
+}
+
+.search-input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+  background: rgba(0, 212, 255, 0.05);
+}
+
+.filter-select {
+  background: linear-gradient(135deg, var(--bg-hover) 0%, #3a4454 100%);
+  border: 1px solid var(--bg-hover);
+  color: var(--text-primary);
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  min-width: 150px;
+  font-weight: 500;
+}
+
+.filter-select:hover {
+  border-color: var(--accent);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, #00b8d4 100%);
+  color: var(--bg-dark);
+}
+
+.filter-select:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 12px rgba(0, 212, 255, 0.3);
+  background: linear-gradient(135deg, var(--accent-hover) 0%, #00b8d4 100%);
+  color: var(--bg-dark);
+}
+
+.filter-select option {
+  background: var(--bg-card);
+  color: var(--text-primary);
+  padding: 10px;
+  border: none;
+  margin: 4px 0;
+}
+
+.filter-select option:hover {
+  background: var(--accent);
+  color: var(--bg-dark);
+}
+
 @keyframes slideIn {
   from {
     opacity: 0;

@@ -278,4 +278,133 @@ document.addEventListener('DOMContentLoaded', () => {
       app.switchTab(this.dataset.tab);
     });
   });
+
+  // ============ SEARCH & FILTER ============
+  // Assessments search and filter
+  document.getElementById('assessmentsSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filter = document.getElementById('assessmentsFilter').value;
+    const items = document.querySelectorAll('#assessmentsContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const type = item.dataset.type;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || type === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('assessmentsFilter').addEventListener('change', function() {
+    const filter = this.value;
+    const searchTerm = document.getElementById('assessmentsSearch').value.toLowerCase();
+    const items = document.querySelectorAll('#assessmentsContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const type = item.dataset.type;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || type === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  // Training search and filter
+  document.getElementById('trainingSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filter = document.getElementById('trainingFilter').value;
+    const items = document.querySelectorAll('#trainingContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const level = item.dataset.level;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || level === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('trainingFilter').addEventListener('change', function() {
+    const filter = this.value;
+    const searchTerm = document.getElementById('trainingSearch').value.toLowerCase();
+    const items = document.querySelectorAll('#trainingContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const level = item.dataset.level;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || level === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  // Mentorship search and filter
+  document.getElementById('mentorshipSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filter = document.getElementById('mentorshipFilter').value;
+    const items = document.querySelectorAll('#mentorshipContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const rating = parseFloat(item.dataset.rating);
+      const availability = item.dataset.availability;
+      const matchesSearch = text.includes(searchTerm);
+      let matchesFilter = !filter;
+      
+      if (filter === 'high-rating') matchesFilter = rating >= 4.8;
+      else if (filter === 'available') matchesFilter = availability !== 'Flexible';
+      else if (filter === 'flexible') matchesFilter = availability === 'Flexible';
+      
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('mentorshipFilter').addEventListener('change', function() {
+    const filter = this.value;
+    const searchTerm = document.getElementById('mentorshipSearch').value.toLowerCase();
+    const items = document.querySelectorAll('#mentorshipContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const rating = parseFloat(item.dataset.rating);
+      const availability = item.dataset.availability;
+      const matchesSearch = text.includes(searchTerm);
+      let matchesFilter = !filter;
+      
+      if (filter === 'high-rating') matchesFilter = rating >= 4.8;
+      else if (filter === 'available') matchesFilter = availability !== 'Flexible';
+      else if (filter === 'flexible') matchesFilter = availability === 'Flexible';
+      
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  // Jobs search and filter
+  document.getElementById('jobsSearch').addEventListener('input', function() {
+    const searchTerm = this.value.toLowerCase();
+    const filter = document.getElementById('jobsFilter').value;
+    const items = document.querySelectorAll('#jobsContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const type = item.dataset.type;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || type === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
+
+  document.getElementById('jobsFilter').addEventListener('change', function() {
+    const filter = this.value;
+    const searchTerm = document.getElementById('jobsSearch').value.toLowerCase();
+    const items = document.querySelectorAll('#jobsContent > div');
+    
+    items.forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const type = item.dataset.type;
+      const matchesSearch = text.includes(searchTerm);
+      const matchesFilter = !filter || type === filter;
+      item.style.display = (matchesSearch && matchesFilter) ? 'block' : 'none';
+    });
+  });
 });

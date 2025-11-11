@@ -136,6 +136,14 @@
           <section id="assessmentsSection" class="module active">
             <div class="section-header">
               <h2>Career Assessments</h2>
+              <div class="search-filter-bar">
+                <input type="text" id="assessmentsSearch" class="search-input" placeholder="Search assessments..." />
+                <select id="assessmentsFilter" class="filter-select">
+                  <option value="">All Assessments</option>
+                  <option value="available">Available</option>
+                  <option value="completed">Completed</option>
+                </select>
+              </div>
             </div>
             <div id="assessmentsContent" class="content-grid"></div>
           </section>
@@ -144,6 +152,15 @@
           <section id="trainingSection" class="module">
             <div class="section-header">
               <h2>Training & Learning Paths</h2>
+              <div class="search-filter-bar">
+                <input type="text" id="trainingSearch" class="search-input" placeholder="Search training courses..." />
+                <select id="trainingFilter" class="filter-select">
+                  <option value="">All Courses</option>
+                  <option value="beginner">Beginner</option>
+                  <option value="intermediate">Intermediate</option>
+                  <option value="advanced">Advanced</option>
+                </select>
+              </div>
             </div>
             <div id="trainingContent" class="content-grid"></div>
           </section>
@@ -152,6 +169,15 @@
           <section id="mentorshipSection" class="module">
             <div class="section-header">
               <h2>Find Mentors</h2>
+              <div class="search-filter-bar">
+                <input type="text" id="mentorshipSearch" class="search-input" placeholder="Search mentors by name..." />
+                <select id="mentorshipFilter" class="filter-select">
+                  <option value="">All Mentors</option>
+                  <option value="high-rating">High Rating (4.8+)</option>
+                  <option value="available">Available Now</option>
+                  <option value="flexible">Flexible Hours</option>
+                </select>
+              </div>
             </div>
             <div id="mentorshipContent" class="content-grid"></div>
           </section>
@@ -160,6 +186,15 @@
           <section id="jobsSection" class="module">
             <div class="section-header">
               <h2>Job Opportunities</h2>
+              <div class="search-filter-bar">
+                <input type="text" id="jobsSearch" class="search-input" placeholder="Search jobs by title or company..." />
+                <select id="jobsFilter" class="filter-select">
+                  <option value="">All Jobs</option>
+                  <option value="remote">Remote</option>
+                  <option value="on-site">On-site</option>
+                  <option value="hybrid">Hybrid</option>
+                </select>
+              </div>
             </div>
             <div id="jobsContent" class="content-grid"></div>
           </section>
